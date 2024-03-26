@@ -28,7 +28,8 @@ public class UserController {
 
 
     @PutMapping("/import")
-    public void importUser(@RequestBody ImportUserRequest request){
+    public void importUser(@RequestBody ImportUserRequest request, Long appId){
+        request.setAppId(appId);
         userService.importUser(request);
     }
 
