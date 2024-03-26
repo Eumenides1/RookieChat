@@ -39,3 +39,4 @@ build/
 
 application-prod.properties
 application-test.properties
+!/.idea/
