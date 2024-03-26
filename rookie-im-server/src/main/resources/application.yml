@@ -1,0 +1,16 @@
+server:
+  port: ${rookie-im.server.port}
+spring:
+  profiles:
+    #运行的环境
+    active: test
+  application:
+    name: rookie-im
+  datasource:
+    url: jdbc:mysql://${rookie-im.mysql.ip}:${rookie-im.mysql.port}/${rookie-im.mysql.db}?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: ${rookie-im.mysql.username}
+    password: ${rookie-im.mysql.password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
