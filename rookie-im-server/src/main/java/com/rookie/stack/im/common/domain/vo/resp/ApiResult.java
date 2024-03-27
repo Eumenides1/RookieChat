@@ -25,6 +25,14 @@ public class ApiResult<T> {
         return result;
     }
 
+    public static <T> ApiResult<T> fail(Integer code, String msg) {
+        ApiResult<T> result = new ApiResult<T>();
+        result.setSuccess(Boolean.FALSE);
+        result.setErrCode(code);
+        result.setErrMsg(msg);
+        return result;
+    }
+
 
 
 
