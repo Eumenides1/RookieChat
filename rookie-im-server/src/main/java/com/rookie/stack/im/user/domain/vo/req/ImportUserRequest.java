@@ -5,6 +5,7 @@ import com.rookie.stack.im.user.domain.entity.User;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -16,6 +17,6 @@ import java.util.List;
 public class ImportUserRequest extends BaseRequest {
 
     @ApiModelProperty("导入用户资料列表")
-    private  List<ImportUserEntity> userList;
+    private  List<@Valid ImportUserEntity> userList;
 
 }

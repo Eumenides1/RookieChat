@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 /**
  * <p>
  * 菜鸟 IM 用户表 前端控制器
@@ -32,7 +34,7 @@ public class UserController {
 
     @PutMapping("/import")
     @ApiOperation(value = "导入用户资料")
-    public ApiResult<Void> importUser(@RequestBody ImportUserRequest request, Long appId){
+    public ApiResult<Void> importUser(@Valid @RequestBody ImportUserRequest request, Long appId){
         request.setAppId(appId);
         userService.importUser(request);
         return ApiResult.success();
