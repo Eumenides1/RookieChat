@@ -16,6 +16,6 @@ import java.util.List;
 public class ImportUserRequest extends BaseRequest {
 
     @ApiModelProperty("导入用户资料列表")
-    private  List<User> userList;
+    private  List<ImportUserEntity> userList;
 
 }

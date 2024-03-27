@@ -2,9 +2,11 @@ package com.rookie.stack.im.user.service.impl;
 
 import com.rookie.stack.im.common.exception.BusinessException;
 import com.rookie.stack.im.user.dao.UserDao;
+import com.rookie.stack.im.user.domain.entity.User;
 import com.rookie.stack.im.user.domain.vo.req.ImportUserRequest;
 import com.rookie.stack.im.user.domain.vo.resp.ImportUserResp;
 import com.rookie.stack.im.user.service.IUserService;
+import com.rookie.stack.im.user.service.adapter.UserAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +20,7 @@ import java.util.UUID;
 @Service
 public class UserServiceImpl implements IUserService {
 
-    public static final int USER_MAX_IMPORT_SIZE = 1;
+    public static final int USER_MAX_IMPORT_SIZE = 100;
     @Autowired
     private UserDao userDao;
 
@@ -32,9 +34,8 @@ public class UserServiceImpl implements IUserService {
         ImportUserResp importUserResp = new ImportUserResp();
 
         importUserRequest.getUserList().forEach(e -> {
-            e.setUserId(UUID.randomUUID().toString());
-            e.setAppId(importUserRequest.getAppId());
-            boolean save = userDao.save(e);
+            User insert = UserAdapter.importUserSave(importUserRequest.getAppId(), e);
+            boolean save = userDao.save(insert);
             if (!save) {
                 // TODO 这里需要需要抛出一个业务异常
             }
