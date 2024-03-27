@@ -10,6 +10,8 @@ import com.rookie.stack.im.user.service.adapter.UserAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -28,18 +30,19 @@ public class UserServiceImpl implements IUserService {
     public ImportUserResp importUser(ImportUserRequest importUserRequest) {
 
         if (importUserRequest.getUserList().size() > USER_MAX_IMPORT_SIZE) {
-            // TODO 这里需要处理异常
             throw new BusinessException("单次上传用户数量超过限制");
         }
         ImportUserResp importUserResp = new ImportUserResp();
-
+        List<String> errorUserNameList = new ArrayList<>();
         importUserRequest.getUserList().forEach(e -> {
             User insert = UserAdapter.importUserSave(importUserRequest.getAppId(), e);
+            // TODO 在这里可以限制手机号唯一/用户名唯一
             boolean save = userDao.save(insert);
             if (!save) {
-                // TODO 这里需要需要抛出一个业务异常
+                errorUserNameList.add(insert.getUserName());
             }
+            importUserResp.setErrorImportUserName(errorUserNameList);
         });
-        return null;
+        return importUserResp;
     }
 }

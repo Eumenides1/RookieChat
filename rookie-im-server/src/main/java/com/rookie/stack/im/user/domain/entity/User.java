@@ -69,6 +69,12 @@ public class User implements Serializable {
     private String email;
 
     /**
+     * 用户密码
+     */
+    @TableField("password")
+    private String password;
+
+    /**
      * 用户头像
      */
     @TableField("avatar")

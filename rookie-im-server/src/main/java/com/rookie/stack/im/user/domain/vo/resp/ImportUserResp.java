@@ -12,8 +12,7 @@ import java.util.List;
 @Data
 public class ImportUserResp {
 
-    private List<Integer> successId;
 
-    private List<Integer> errorId;
+    private List<String> errorImportUserName;
 
 }

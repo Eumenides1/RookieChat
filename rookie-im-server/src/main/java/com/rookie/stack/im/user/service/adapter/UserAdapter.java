@@ -1,6 +1,7 @@
 package com.rookie.stack.im.user.service.adapter;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.rookie.stack.im.common.enums.YesOrNoEnum;
 import com.rookie.stack.im.user.domain.entity.User;
 import com.rookie.stack.im.user.domain.vo.req.ImportUserEntity;
 import com.rookie.stack.im.user.domain.vo.req.ImportUserRequest;
@@ -20,6 +21,7 @@ public class UserAdapter {
         // TODO 在这里设置默认属性
         user.setAppId(appId);
         user.setUserId(UUID.randomUUID().toString());
+        user.setForbiddenFlag(YesOrNoEnum.NO.getStatus());
 
         return user;
     }

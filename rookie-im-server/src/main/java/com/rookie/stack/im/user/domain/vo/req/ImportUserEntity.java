@@ -1,6 +1,7 @@
 package com.rookie.stack.im.user.domain.vo.req;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.rookie.stack.im.common.annotation.IsMobile;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -23,6 +24,7 @@ public class ImportUserEntity {
      * 用户手机号
      */
     @NotNull(message = "手机号不能为空")
+    @IsMobile
     @ApiModelProperty("用户手机号")
     private String mobile;
 
