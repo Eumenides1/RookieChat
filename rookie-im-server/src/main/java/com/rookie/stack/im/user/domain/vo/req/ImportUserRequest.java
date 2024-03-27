@@ -1,4 +1,4 @@
-package com.rookie.stack.im.user.domain.req;
+package com.rookie.stack.im.user.domain.vo.req;
 
 import com.rookie.stack.common.domain.req.BaseRequest;
 import com.rookie.stack.im.user.domain.entity.User;

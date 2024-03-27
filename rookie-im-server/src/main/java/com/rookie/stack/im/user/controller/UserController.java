@@ -1,14 +1,14 @@
 package com.rookie.stack.im.user.controller;
 
 
-import com.rookie.stack.im.user.domain.req.ImportUserRequest;
+import com.rookie.stack.im.common.domain.vo.resp.ApiResult;
+import com.rookie.stack.im.user.domain.vo.req.ImportUserRequest;
 import com.rookie.stack.im.user.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -28,9 +28,10 @@ public class UserController {
 
 
     @PutMapping("/import")
-    public void importUser(@RequestBody ImportUserRequest request, Long appId){
+    public ApiResult<Void> importUser(@RequestBody ImportUserRequest request, Long appId){
         request.setAppId(appId);
         userService.importUser(request);
+        return ApiResult.success();
     }
 
 

@@ -1,8 +1,7 @@
 package com.rookie.stack.im.user.service;
 
-import com.rookie.stack.im.user.domain.entity.User;
-import com.baomidou.mybatisplus.extension.service.IService;
-import com.rookie.stack.im.user.domain.req.ImportUserRequest;
+import com.rookie.stack.im.user.domain.vo.req.ImportUserRequest;
+import com.rookie.stack.im.user.domain.vo.resp.ImportUserResp;
 
 /**
  * <p>
@@ -14,6 +13,6 @@ import com.rookie.stack.im.user.domain.req.ImportUserRequest;
  */
 public interface IUserService {
 
-    void importUser(ImportUserRequest importUserRequest);
+    ImportUserResp importUser(ImportUserRequest importUserRequest);
 
 }
