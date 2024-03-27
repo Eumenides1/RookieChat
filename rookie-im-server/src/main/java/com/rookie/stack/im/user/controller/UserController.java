@@ -4,6 +4,8 @@ package com.rookie.stack.im.user.controller;
 import com.rookie.stack.im.common.domain.vo.resp.ApiResult;
 import com.rookie.stack.im.user.domain.vo.req.ImportUserRequest;
 import com.rookie.stack.im.user.service.IUserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/capi/user")
+@Api(tags = "用户模块相关接口")
 public class UserController {
 
     @Autowired
@@ -28,12 +31,12 @@ public class UserController {
 
 
     @PutMapping("/import")
+    @ApiOperation(value = "导入用户资料")
     public ApiResult<Void> importUser(@RequestBody ImportUserRequest request, Long appId){
         request.setAppId(appId);
         userService.importUser(request);
         return ApiResult.success();
     }
-
 
 }
 
