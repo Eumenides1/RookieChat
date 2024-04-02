@@ -20,9 +20,9 @@ public class UserAdapter {
         BeanUtil.copyProperties(entity, user);
         // TODO 在这里设置默认属性
         user.setAppId(appId);
+        // TODO 这里可以使用雪花算法
         user.setUserId(UUID.randomUUID().toString());
         user.setForbiddenFlag(YesOrNoEnum.NO.getStatus());
-
         return user;
     }
 

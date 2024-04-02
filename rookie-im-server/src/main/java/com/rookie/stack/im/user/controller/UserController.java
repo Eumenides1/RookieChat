@@ -3,6 +3,7 @@ package com.rookie.stack.im.user.controller;
 
 import com.rookie.stack.im.common.domain.vo.resp.ApiResult;
 import com.rookie.stack.im.user.domain.vo.req.ImportUserRequest;
+import com.rookie.stack.im.user.domain.vo.resp.ImportUserResp;
 import com.rookie.stack.im.user.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -34,10 +35,10 @@ public class UserController {
 
     @PutMapping("/import")
     @ApiOperation(value = "导入用户资料")
-    public ApiResult<Void> importUser(@Valid @RequestBody ImportUserRequest request, Long appId){
+    public ApiResult<ImportUserResp> importUser(@Valid @RequestBody ImportUserRequest request, Long appId){
         request.setAppId(appId);
-        userService.importUser(request);
-        return ApiResult.success();
+        ImportUserResp importUserResp = userService.importUser(request);
+        return ApiResult.success(importUserResp);
     }
 
 }
