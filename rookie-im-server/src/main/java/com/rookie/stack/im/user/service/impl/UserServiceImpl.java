@@ -1,6 +1,7 @@
 package com.rookie.stack.im.user.service.impl;
 
 import com.rookie.stack.im.common.exception.BusinessException;
+import com.rookie.stack.im.common.exception.UserErrorEnum;
 import com.rookie.stack.im.user.dao.UserDao;
 import com.rookie.stack.im.user.domain.entity.User;
 import com.rookie.stack.im.user.domain.vo.req.ImportUserRequest;
@@ -30,7 +31,7 @@ public class UserServiceImpl implements IUserService {
     public ImportUserResp importUser(ImportUserRequest importUserRequest) {
 
         if (importUserRequest.getUserList().size() > USER_MAX_IMPORT_SIZE) {
-            throw new BusinessException("单次上传用户数量超过限制");
+            throw new BusinessException(UserErrorEnum.OUTBOUND_INPORT_USER_LIMIT);
         }
         ImportUserResp importUserResp = new ImportUserResp();
         List<String> errorUserNameList = new ArrayList<>();
