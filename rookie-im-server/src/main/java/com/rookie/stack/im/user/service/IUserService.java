@@ -1,6 +1,7 @@
 package com.rookie.stack.im.user.service;
 
 import com.rookie.stack.im.user.domain.vo.req.ImportUserRequest;
+import com.rookie.stack.im.user.domain.vo.req.ModifyUserRequest;
 import com.rookie.stack.im.user.domain.vo.resp.ImportUserResp;
 
 /**
@@ -15,6 +16,6 @@ public interface IUserService {
 
     ImportUserResp importUser(ImportUserRequest importUserRequest);
 
-
+    void modifyUserInfo(ModifyUserRequest modifyUserRequest);
 
 }

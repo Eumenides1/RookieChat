@@ -11,7 +11,9 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public enum UserErrorEnum implements ErrorEnum{
-    OUTBOUND_INPORT_USER_LIMIT(-11, "单次上传用户数量超过限制")
+    OUTBOUND_IMPORT_USER_LIMIT(-11, "单次上传用户数量超过限制"),
+    MODIFY_USER_INFO_ERROR(-12, "修改用户信息错误")
+
     ;
     private final Integer code;
     private final String msg;
