@@ -32,16 +32,14 @@ public class UserController {
 
     @PutMapping("/import")
     @ApiOperation(value = "导入用户资料")
-    public ApiResult<ImportUserResp> importUser(@Valid @RequestBody ImportUserRequest request, Long appId){
-        request.setAppId(appId);
+    public ApiResult<ImportUserResp> importUser(@Valid @RequestBody ImportUserRequest request){
         ImportUserResp importUserResp = userService.importUser(request);
         return ApiResult.success(importUserResp);
     }
 
     @PostMapping("/modify")
     @ApiOperation(value = "修改用户资料")
-    public ApiResult<Void> modifyUserInfo(@RequestBody @Valid ModifyUserRequest request, Long appId){
-        request.setAppId(appId);
+    public ApiResult<Void> modifyUserInfo(@RequestBody @Valid ModifyUserRequest request){
         userService.modifyUserInfo(request);
         return ApiResult.success();
     }
