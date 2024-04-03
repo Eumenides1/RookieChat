@@ -2,9 +2,11 @@ package com.rookie.stack.im.user.controller;
 
 
 import com.rookie.stack.im.common.domain.vo.resp.ApiResult;
+import com.rookie.stack.im.user.domain.vo.req.GetUserInfoReq;
 import com.rookie.stack.im.user.domain.vo.req.ImportUserRequest;
 import com.rookie.stack.im.user.domain.vo.req.ModifyUserRequest;
 import com.rookie.stack.im.user.domain.vo.resp.ImportUserResp;
+import com.rookie.stack.im.user.domain.vo.resp.GetUserInfoResp;
 import com.rookie.stack.im.user.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -43,6 +45,15 @@ public class UserController {
         userService.modifyUserInfo(request);
         return ApiResult.success();
     }
+
+    @GetMapping("/getUserInfo")
+    @ApiOperation(value = "批量获取用户信息")
+    public ApiResult<GetUserInfoResp> getUserInfo(GetUserInfoReq request){
+        GetUserInfoResp userInfo = userService.getUserInfo(request);
+        return ApiResult.success(userInfo);
+    }
+
+
 
 
 

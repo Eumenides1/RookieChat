@@ -1,6 +1,7 @@
 package com.rookie.stack.im.user.domain.vo.req;
 
 import com.rookie.stack.common.domain.req.BaseRequest;
+import com.rookie.stack.im.user.domain.dto.ImportUserEntity;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 

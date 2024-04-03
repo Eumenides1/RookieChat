@@ -5,10 +5,13 @@ import com.rookie.stack.im.common.exception.BusinessException;
 import com.rookie.stack.im.common.exception.UserErrorEnum;
 import com.rookie.stack.im.common.utils.AssertUtil;
 import com.rookie.stack.im.user.dao.UserDao;
+import com.rookie.stack.im.user.domain.dto.UserEntity;
 import com.rookie.stack.im.user.domain.entity.User;
+import com.rookie.stack.im.user.domain.vo.req.GetUserInfoReq;
 import com.rookie.stack.im.user.domain.vo.req.ImportUserRequest;
 import com.rookie.stack.im.user.domain.vo.req.ModifyUserRequest;
 import com.rookie.stack.im.user.domain.vo.resp.ImportUserResp;
+import com.rookie.stack.im.user.domain.vo.resp.GetUserInfoResp;
 import com.rookie.stack.im.user.service.IUserService;
 import com.rookie.stack.im.user.service.adapter.UserAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +19,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * @author eumenides
@@ -61,5 +63,24 @@ public class UserServiceImpl implements IUserService {
         if (!updated) {
             throw new BusinessException(UserErrorEnum.MODIFY_USER_INFO_ERROR);
         }
+    }
+
+    @Override
+    public GetUserInfoResp getUserInfo(GetUserInfoReq req) {
+        GetUserInfoResp resp = new GetUserInfoResp();
+        List<UserEntity> userEntities = new ArrayList<>();
+        List<String> errorIds = new ArrayList<>();
+        for (String userId : req.getUserIds()) {
+            User user = userDao.getUserInfoByUserId(userId, req.getAppId());
+            if (user != null) {
+                UserEntity entity = UserAdapter.buildUserInfo(user);
+                userEntities.add(entity);
+            } else {
+                errorIds.add(userId);
+            }
+        }
+        resp.setUserInfoList(userEntities);
+        resp.setErrorIds(errorIds);
+        return resp;
     }
 }

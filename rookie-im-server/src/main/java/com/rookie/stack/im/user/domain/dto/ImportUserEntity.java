@@ -1,4 +1,4 @@
-package com.rookie.stack.im.user.domain.vo.req;
+package com.rookie.stack.im.user.domain.dto;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.rookie.stack.im.common.annotation.IsMobile;

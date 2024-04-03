@@ -2,9 +2,9 @@ package com.rookie.stack.im.user.service.adapter;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.rookie.stack.im.common.enums.YesOrNoEnum;
+import com.rookie.stack.im.user.domain.dto.UserEntity;
 import com.rookie.stack.im.user.domain.entity.User;
-import com.rookie.stack.im.user.domain.vo.req.ImportUserEntity;
-import com.rookie.stack.im.user.domain.vo.req.ImportUserRequest;
+import com.rookie.stack.im.user.domain.dto.ImportUserEntity;
 
 import java.util.UUID;
 
@@ -26,4 +26,9 @@ public class UserAdapter {
         return user;
     }
 
+    public static UserEntity buildUserInfo(User user) {
+        UserEntity entity = new UserEntity();
+        BeanUtil.copyProperties(user, entity);
+        return entity;
+    }
 }
