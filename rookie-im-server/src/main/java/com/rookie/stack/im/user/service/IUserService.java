@@ -1,5 +1,6 @@
 package com.rookie.stack.im.user.service;
 
+import com.rookie.stack.im.user.domain.dto.UserEntity;
 import com.rookie.stack.im.user.domain.vo.req.GetUserInfoReq;
 import com.rookie.stack.im.user.domain.vo.req.ImportUserRequest;
 import com.rookie.stack.im.user.domain.vo.req.ModifyUserRequest;
@@ -21,5 +22,7 @@ public interface IUserService {
     void modifyUserInfo(ModifyUserRequest modifyUserRequest);
 
     GetUserInfoResp getUserInfo(GetUserInfoReq req);
+
+    UserEntity getSingleUserInfo(String userId, Long appId);
 
 }

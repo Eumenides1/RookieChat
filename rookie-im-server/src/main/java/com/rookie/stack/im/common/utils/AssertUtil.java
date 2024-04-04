@@ -34,6 +34,12 @@ public class AssertUtil {
             throwException(msg);
         }
     }
+
+    public static void isEmpty(Object obj, ErrorEnum errorEnum, Object... args) {
+        if (isEmpty(obj)) {
+            throwException(errorEnum, args);
+        }
+    }
     private static void throwException(String msg) {
         throwException(null, msg);
 

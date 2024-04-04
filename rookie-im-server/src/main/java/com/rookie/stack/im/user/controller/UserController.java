@@ -2,6 +2,7 @@ package com.rookie.stack.im.user.controller;
 
 
 import com.rookie.stack.im.common.domain.vo.resp.ApiResult;
+import com.rookie.stack.im.user.domain.dto.UserEntity;
 import com.rookie.stack.im.user.domain.vo.req.GetUserInfoReq;
 import com.rookie.stack.im.user.domain.vo.req.ImportUserRequest;
 import com.rookie.stack.im.user.domain.vo.req.ModifyUserRequest;
@@ -51,6 +52,13 @@ public class UserController {
     public ApiResult<GetUserInfoResp> getUserInfo(GetUserInfoReq request){
         GetUserInfoResp userInfo = userService.getUserInfo(request);
         return ApiResult.success(userInfo);
+    }
+
+    @GetMapping("/getSingleUserInfo")
+    @ApiOperation(value = "获取单个用户信息")
+    public ApiResult<UserEntity> getSingleUserInfo(String userId,  Long appId){
+        UserEntity singleUserInfo = userService.getSingleUserInfo(userId, appId);
+        return ApiResult.success(singleUserInfo);
     }
 
 

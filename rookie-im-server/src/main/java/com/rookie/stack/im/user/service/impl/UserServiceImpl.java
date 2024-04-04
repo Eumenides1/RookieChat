@@ -83,4 +83,11 @@ public class UserServiceImpl implements IUserService {
         resp.setErrorIds(errorIds);
         return resp;
     }
+
+    @Override
+    public UserEntity getSingleUserInfo(String userId, Long appId) {
+        User user = userDao.getUserInfoByUserId(userId, appId);
+        AssertUtil.isEmpty(user, UserErrorEnum.USER_IS_NOT_EXIST,"");
+        return UserAdapter.buildUserInfo(user);
+    }
 }
