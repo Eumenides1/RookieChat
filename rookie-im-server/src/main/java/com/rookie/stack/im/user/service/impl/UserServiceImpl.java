@@ -1,6 +1,11 @@
 package com.rookie.stack.im.user.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.rookie.stack.common.domain.resp.PagedResponse;
 import com.rookie.stack.im.common.exception.BusinessException;
 import com.rookie.stack.im.common.exception.UserErrorEnum;
 import com.rookie.stack.im.common.utils.AssertUtil;
@@ -12,6 +17,7 @@ import com.rookie.stack.im.user.domain.vo.req.ImportUserRequest;
 import com.rookie.stack.im.user.domain.vo.req.ModifyUserRequest;
 import com.rookie.stack.im.user.domain.vo.resp.ImportUserResp;
 import com.rookie.stack.im.user.domain.vo.resp.GetUserInfoResp;
+import com.rookie.stack.im.user.mapper.UserMapper;
 import com.rookie.stack.im.user.service.IUserService;
 import com.rookie.stack.im.user.service.adapter.UserAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +32,10 @@ import java.util.List;
  * @date 2024/3/26
  */
 @Service
-public class UserServiceImpl implements IUserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService  {
 
     public static final int USER_MAX_IMPORT_SIZE = 100;
+
     @Autowired
     private UserDao userDao;
 
@@ -89,5 +96,27 @@ public class UserServiceImpl implements IUserService {
         User user = userDao.getUserInfoByUserId(userId, appId);
         AssertUtil.isEmpty(user, UserErrorEnum.USER_IS_NOT_EXIST,"");
         return UserAdapter.buildUserInfo(user);
+    }
+
+    @Override
+    public PagedResponse<UserEntity> getAllUserInfo(Long appId, Integer page, Integer pageSize) {
+        List<UserEntity> userInfoList = new ArrayList<>();
+
+        Page<User> userPage= new Page<>(page, pageSize);
+
+        IPage<User> allUser = userDao.getAllUser(appId, userPage);
+        allUser.getRecords().forEach(record -> {
+            UserEntity user = UserAdapter.buildUserInfo(record);
+            userInfoList.add(user);
+        });
+
+        PagedResponse<UserEntity> response = new PagedResponse<>();
+        response.setRecords(userInfoList);
+        response.setTotal(allUser.getTotal());
+        response.setPage(page);
+        response.setPageSize(pageSize);
+
+        return response;
+
     }
 }

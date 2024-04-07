@@ -1,11 +1,16 @@
 package com.rookie.stack.im.user.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.rookie.stack.common.domain.resp.PagedResponse;
 import com.rookie.stack.im.user.domain.dto.UserEntity;
+import com.rookie.stack.im.user.domain.entity.User;
 import com.rookie.stack.im.user.domain.vo.req.GetUserInfoReq;
 import com.rookie.stack.im.user.domain.vo.req.ImportUserRequest;
 import com.rookie.stack.im.user.domain.vo.req.ModifyUserRequest;
 import com.rookie.stack.im.user.domain.vo.resp.ImportUserResp;
 import com.rookie.stack.im.user.domain.vo.resp.GetUserInfoResp;
+
+import java.util.List;
 
 /**
  * <p>
@@ -24,5 +29,7 @@ public interface IUserService {
     GetUserInfoResp getUserInfo(GetUserInfoReq req);
 
     UserEntity getSingleUserInfo(String userId, Long appId);
+
+    PagedResponse<UserEntity> getAllUserInfo(Long appId, Integer page, Integer pageSize);
 
 }

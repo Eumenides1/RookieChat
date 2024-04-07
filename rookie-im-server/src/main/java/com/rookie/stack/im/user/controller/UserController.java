@@ -1,6 +1,7 @@
 package com.rookie.stack.im.user.controller;
 
 
+import com.rookie.stack.common.domain.resp.PagedResponse;
 import com.rookie.stack.im.common.domain.vo.resp.ApiResult;
 import com.rookie.stack.im.user.domain.dto.UserEntity;
 import com.rookie.stack.im.user.domain.vo.req.GetUserInfoReq;
@@ -15,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -59,6 +62,15 @@ public class UserController {
     public ApiResult<UserEntity> getSingleUserInfo(String userId,  Long appId){
         UserEntity singleUserInfo = userService.getSingleUserInfo(userId, appId);
         return ApiResult.success(singleUserInfo);
+    }
+
+    @GetMapping("/getAllUserInfo")
+    @ApiOperation(value = "获取所有用户信息列表")
+    public ApiResult<PagedResponse<UserEntity>> getAllUserInfo(@RequestParam(required = false, defaultValue = "1") Integer page,
+                                                               @RequestParam(required = false, defaultValue = "10") Integer pageSize,
+                                                               Long appId) {
+        PagedResponse<UserEntity> userEntityList = userService.getAllUserInfo(appId, page, pageSize);
+        return ApiResult.success(userEntityList);
     }
 
 
