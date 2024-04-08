@@ -18,6 +18,7 @@
     <modules>
         <module>rookie-im-server</module>
         <module>rookie-im-framework</module>
+        <module>netty-study</module>
     </modules>
 
     <properties>
