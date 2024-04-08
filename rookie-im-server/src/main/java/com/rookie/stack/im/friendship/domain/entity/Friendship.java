@@ -28,8 +28,8 @@ public class Friendship implements Serializable {
     /**
      * app_id
      */
-      @TableId("app_id")
-    private Integer appId;
+    @TableId("app_id")
+    private Long appId;
 
     /**
      * from_id

@@ -17,4 +17,6 @@ public interface IFriendshipService {
 
     ImportFriendShipResp importFriendShip(ImportFriendShipReq req);
 
+    void addFriend();
+
 }

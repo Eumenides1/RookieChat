@@ -1,7 +1,6 @@
 package com.rookie.stack.im.common.enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+
 import lombok.Getter;
 
 import java.util.Arrays;
@@ -37,14 +36,6 @@ public enum FriendShipStatusEnum {
     FriendShipStatusEnum(int code, String desc) {
         this.code = code;
         this.desc = desc;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public String getDesc() {
-        return desc;
     }
 
     public static FriendShipStatusEnum of(int code) {
