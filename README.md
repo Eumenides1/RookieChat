@@ -31,8 +31,7 @@
 
 ## 文档获取
 - 关注公众号，回复IM获取
-![扫码_搜索联合传播样式-标准色版.png](doc%2Fimage%2F%E6%89%AB%E7%A0%81_%E6%90%9C%E7%B4%A2%E8%81%94%E5%90%88%E4%BC%A0%E6%92%AD%E6%A0%B7%E5%BC%8F-%E6%A0%87%E5%87%86%E8%89%B2%E7%89%88.png)
-
+![扫码_搜索联合传播样式-标准色版.png](https://img2.imgtp.com/2024/04/08/ZFOdEV7u.png)
 
 ## 项目交流群
-![WechatIMG354.jpg](doc%2Fimage%2FWechatIMG354.jpg)
+![WechatIMG354.jpg](https://img2.imgtp.com/2024/04/08/nWXBlN23.jpg)
