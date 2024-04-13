@@ -35,6 +35,31 @@ public class AssertUtil {
         }
     }
 
+    public static void isTrue(boolean expression, String msg){
+        if (!expression) {
+            throwException(msg);
+        }
+    }
+
+    public static void isTrue(boolean expression,ErrorEnum errorEnum ,Object... args){
+        if (!expression) {
+            throwException(errorEnum, args);
+        }
+    }
+
+    public static void isFalse(boolean expression, String msg){
+        if (expression) {
+            throwException(msg);
+        }
+    }
+
+    public static void isFalse(boolean expression,ErrorEnum errorEnum ,Object... args){
+        if (expression) {
+            throwException(errorEnum, args);
+        }
+    }
+
+
     public static void isEmpty(Object obj, ErrorEnum errorEnum, Object... args) {
         if (isEmpty(obj)) {
             throwException(errorEnum, args);
