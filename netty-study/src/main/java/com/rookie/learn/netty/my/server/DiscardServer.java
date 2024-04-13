@@ -1,4 +1,4 @@
-package com.rookie.stack.io.netty.my.server;
+package com.rookie.learn.netty.my.server;
 
 import com.rookie.stack.io.netty.my.codec.MyDecodecer;
 import io.netty.bootstrap.ServerBootstrap;

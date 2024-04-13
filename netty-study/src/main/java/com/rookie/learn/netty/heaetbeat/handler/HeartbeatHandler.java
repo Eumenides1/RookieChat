@@ -1,4 +1,4 @@
-package com.rookie.stack.io.netty.heaetbeat.handler;
+package com.rookie.learn.netty.heaetbeat.handler;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;

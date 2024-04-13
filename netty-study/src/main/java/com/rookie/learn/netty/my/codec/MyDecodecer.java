@@ -1,4 +1,4 @@
-package com.rookie.stack.io.netty.my.codec;
+package com.rookie.learn.netty.my.codec;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;

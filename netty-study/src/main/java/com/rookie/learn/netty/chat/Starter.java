@@ -1,6 +1,7 @@
-package com.rookie.stack.io.netty.chat;
+package com.rookie.learn.netty.chat;
 
-import com.rookie.stack.io.netty.chat.server.DiscardServer;
+
+import com.rookie.learn.netty.chat.server.DiscardServer;
 
 /**
  * @author eumenides

@@ -1,4 +1,4 @@
-package com.rookie.stack.io.netty.heaetbeat;
+package com.rookie.learn.netty.heaetbeat;
 
 
 import com.rookie.stack.io.netty.heaetbeat.server.DiscardServer;

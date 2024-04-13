@@ -1,4 +1,4 @@
-package com.rookie.stack.io.netty.upload.server;
+package com.rookie.learn.netty.upload.server;
 
 import com.rookie.stack.io.netty.upload.codec.UploadFileDecodecer;
 import com.rookie.stack.io.netty.upload.handler.UploadFileHandler;

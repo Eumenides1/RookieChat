@@ -1,4 +1,4 @@
-package com.rookie.stack.io.netty.my;
+package com.rookie.learn.netty.my;
 
 import com.rookie.stack.io.netty.my.server.DiscardServer;
 

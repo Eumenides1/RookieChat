@@ -1,4 +1,4 @@
-package com.rookie.stack.io.netty.upload;
+package com.rookie.learn.netty.upload;
 
 import lombok.Data;
 

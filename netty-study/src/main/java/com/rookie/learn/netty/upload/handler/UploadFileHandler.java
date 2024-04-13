@@ -1,9 +1,8 @@
-package com.rookie.stack.io.netty.upload.handler;
+package com.rookie.learn.netty.upload.handler;
 
 import com.rookie.stack.io.netty.upload.FileDto;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-
 
 import java.io.*;
 

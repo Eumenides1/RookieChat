@@ -1,4 +1,4 @@
-package com.rookie.stack.io.netty.my.handler;
+package com.rookie.learn.netty.my.handler;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;

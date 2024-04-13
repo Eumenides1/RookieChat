@@ -1,10 +1,9 @@
-package com.rookie.stack.io.netty.upload.codec;
+package com.rookie.learn.netty.upload.codec;
 
 import com.rookie.stack.io.netty.upload.FileDto;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
-
 
 import java.util.List;
 

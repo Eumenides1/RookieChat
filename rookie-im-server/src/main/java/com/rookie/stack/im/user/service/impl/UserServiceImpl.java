@@ -54,8 +54,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             if (!save) {
                 errorUserNameList.add(insert.getUserName());
             }
-            importUserResp.setErrorImportUserName(errorUserNameList);
         });
+        importUserResp.setErrorImportUserName(errorUserNameList);
         return importUserResp;
     }
 

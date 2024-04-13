@@ -1,6 +1,7 @@
-package com.rookie.stack.io.netty.chat.server;
+package com.rookie.learn.netty.chat.server;
 
-import com.rookie.stack.io.netty.chat.handler.DiscardServerHandler;
+
+import com.rookie.learn.netty.chat.handler.DiscardServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;

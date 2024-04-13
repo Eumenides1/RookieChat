@@ -1,4 +1,4 @@
-package com.rookie.stack.io.netty.heaetbeat.server;
+package com.rookie.learn.netty.heaetbeat.server;
 
 import com.rookie.stack.io.netty.heaetbeat.handler.HeartbeatHandler;
 import io.netty.bootstrap.ServerBootstrap;

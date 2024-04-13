@@ -1,4 +1,4 @@
-package com.rookie.stack.io.netty.base.handler;
+package com.rookie.learn.netty.base.handler;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
