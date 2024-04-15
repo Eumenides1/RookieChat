@@ -1,6 +1,7 @@
 package com.rookie.learn.netty.heaetbeat.server;
 
-import com.rookie.stack.io.netty.heaetbeat.handler.HeartbeatHandler;
+
+import com.rookie.learn.netty.heaetbeat.handler.HeartbeatHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;

@@ -1,6 +1,6 @@
 package com.rookie.learn.netty.base.server;
 
-import com.rookie.stack.io.netty.base.handler.DiscardServerHandler;
+import com.rookie.learn.netty.base.handler.DiscardServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -35,10 +35,10 @@ public class DiscardServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() { // (4)
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
-                            ch.pipeline().addLast(new LengthFieldBasedFrameDecoder(
-                                    1024,0,
-                                    4,0,4
-                            ));
+//                            ch.pipeline().addLast(new LengthFieldBasedFrameDecoder(
+//                                    1024,0,
+//                                    4,0,4
+//                            ));
 //                            ch.pipeline().addLast(new LengthFieldPrepender(2));
 //                            ch.pipeline().addLast(new StringDecoder());
 //                            ch.pipeline().addLast(new StringEncoder());

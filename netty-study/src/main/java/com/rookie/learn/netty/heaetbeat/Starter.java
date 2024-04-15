@@ -1,7 +1,7 @@
 package com.rookie.learn.netty.heaetbeat;
 
 
-import com.rookie.stack.io.netty.heaetbeat.server.DiscardServer;
+import com.rookie.learn.netty.heaetbeat.server.DiscardServer;
 
 /**
  * @description:

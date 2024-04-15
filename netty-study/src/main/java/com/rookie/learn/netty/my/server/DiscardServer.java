@@ -1,6 +1,6 @@
 package com.rookie.learn.netty.my.server;
 
-import com.rookie.stack.io.netty.my.codec.MyDecodecer;
+import com.rookie.learn.netty.my.codec.MyDecodecer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;

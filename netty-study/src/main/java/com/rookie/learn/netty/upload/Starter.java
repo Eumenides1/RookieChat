@@ -1,7 +1,7 @@
 package com.rookie.learn.netty.upload;
 
 
-import com.rookie.stack.io.netty.upload.server.UploadFileServer;
+import com.rookie.learn.netty.upload.server.UploadFileServer;
 
 /**
  * @description:
