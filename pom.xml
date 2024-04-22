@@ -19,6 +19,8 @@
         <module>rookie-im-server</module>
         <module>rookie-im-framework</module>
         <module>netty-study</module>
+        <module>rookie-im-tcp</module>
+        <module>rookie-im-codec</module>
     </modules>
 
     <properties>
