@@ -67,4 +67,9 @@ public class FriendshipRequestServiceImpl implements IFriendshipRequestService {
         }
         return  res;
     }
+
+    @Override
+    public void approveFriendRequest() {
+
+    }
 }

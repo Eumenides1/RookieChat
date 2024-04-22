@@ -16,4 +16,6 @@ public interface IFriendshipRequestService {
 
     Boolean addFriendshipRequest(String fromId, FriendDto dto, Long appId);
 
+    void approveFriendRequest();
+
 }

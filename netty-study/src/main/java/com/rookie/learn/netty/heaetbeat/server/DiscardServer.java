@@ -10,6 +10,8 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.timeout.IdleStateHandler;
 
 
@@ -37,6 +39,8 @@ public class DiscardServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() { // (4)
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
+                            ch.pipeline().addLast("decoder", new StringDecoder()); // 添加解码器
+                            ch.pipeline().addLast("encoder", new StringEncoder()); // 添加编码器
                             ch.pipeline().addLast(new IdleStateHandler(3,0,0));
                             ch.pipeline().addLast(new HeartbeatHandler());
                         }
@@ -47,8 +51,6 @@ public class DiscardServer {
             // Bind and start to accept incoming connections.
             System.out.println("tcp start success");
             ChannelFuture f = b.bind(port).sync(); // (7)
-
-
             // Wait until the server socket is closed.
             // In this example, this does not happen, but you can do that to gracefully
             // shut down your server.
