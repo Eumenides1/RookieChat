@@ -40,4 +40,4 @@
 ![扫码_搜索联合传播样式-标准色版.png](https://img2.imgtp.com/2024/04/08/ZFOdEV7u.png)
 
 ## 项目交流群
-![WechatIMG354.jpg](https://img2.imgtp.com/2024/04/08/nWXBlN23.jpg)
+![WechatIMG354.jpg](https://img2.imgtp.com/2024/04/23/dkefuyZY.jpg)
