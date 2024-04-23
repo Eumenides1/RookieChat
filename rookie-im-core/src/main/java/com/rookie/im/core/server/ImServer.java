@@ -1,6 +1,6 @@
 package com.rookie.im.core.server;
 
-import com.rookie.im.core.codec.MessageDecoder;
+import com.rookie.im.core.codec.WebSocketMessageDecoder;
 import com.rookie.im.core.handler.RookieServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
@@ -49,14 +49,14 @@ public class ImServer {
                         protected void initChannel(SocketChannel ch) throws Exception {
                             // 配置Channel处理器
                             ChannelPipeline pipeline = ch.pipeline();
-//                            // websocket 基于http协议，所以要有http编解码器
-//                            pipeline.addLast("http-codec", new HttpServerCodec());
-//                            // 对写大数据流的支持
-//                            pipeline.addLast("http-chunked", new ChunkedWriteHandler());
-//                            // 几乎在netty中的编程，都会使用到此hanler
-//                            pipeline.addLast("aggregator", new HttpObjectAggregator(65535));
-                            // pipeline.addLast(new WebSocketServerProtocolHandler("/ws"));
-                            pipeline.addLast(new MessageDecoder());
+                            // websocket 基于http协议，所以要有http编解码器
+                            pipeline.addLast("http-codec", new HttpServerCodec());
+                            // 对写大数据流的支持
+                            pipeline.addLast("http-chunked", new ChunkedWriteHandler());
+                            // 几乎在netty中的编程，都会使用到此hanler
+                            pipeline.addLast("aggregator", new HttpObjectAggregator(65535));
+                            pipeline.addLast(new WebSocketServerProtocolHandler("/ws"));
+                            pipeline.addLast(new WebSocketMessageDecoder());
                             pipeline.addLast(new RookieServerHandler());
                         }
                     });
