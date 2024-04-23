@@ -1,7 +1,6 @@
-package com.rookie.im.tcp;
+package com.rookie.im.core;
 
-import com.rookie.im.tcp.server.ImServer;
-import org.springframework.beans.factory.annotation.Value;
+import com.rookie.im.core.server.ImServer;
 
 /**
  * @author eumenides
