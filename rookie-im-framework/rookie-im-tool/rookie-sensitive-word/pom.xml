@@ -4,17 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.rookie.stack</groupId>
-        <artifactId>RookieIM</artifactId>
+        <groupId>com.rookie.im</groupId>
+        <artifactId>rookie-im-tool</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>rookie-im-framework</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>rookie-im-common-starter</module>
-        <module>rookie-im-tool</module>
-    </modules>
+    <artifactId>rookie-sensitive-word</artifactId>
+
+    <description>菜鸟 IM 敏感词检测工具</description>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

@@ -1,6 +1,7 @@
 package com.rookie.learn.io.bio;
 
-import java.io.IOException;
+import lombok.extern.slf4j.Slf4j;
+
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -9,6 +10,7 @@ import java.net.Socket;
  * @description
  * @date 2024/4/10
  */
+@Slf4j
 public class SockerServer {
 
     public static void main(String[] args) throws Exception {

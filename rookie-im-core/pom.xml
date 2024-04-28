@@ -33,6 +33,20 @@
             <artifactId>fastjson</artifactId>
             <version>2.0.9.graal</version>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <!-- 无需指定版本是因为指定了 spring-boot-dependencies 的版本，而该版本指定了 slf4j 的版本 -->
+            <!--<version>1.7.30</version>-->
+        </dependency>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

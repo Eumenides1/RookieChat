@@ -1,6 +1,7 @@
 package com.rookie.im.core.server;
 
 import com.rookie.im.core.codec.WebSocketMessageDecoder;
+import com.rookie.im.core.config.AppConfig;
 import com.rookie.im.core.handler.RookieServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
@@ -11,10 +12,6 @@ import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.stream.ChunkedWriteHandler;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
 
 /**
  * @author eumenides
@@ -27,11 +24,14 @@ public class ImServer {
     private EventLoopGroup workerGroup;
     private Channel serverChannel;
 
-    public ImServer() {
-        loadConfig();
+    AppConfig.WebSocketConfig webSocketConfig;
+
+    public ImServer(AppConfig.WebSocketConfig webSocketConfig) {
+        this.webSocketConfig = webSocketConfig;
+        this.port = webSocketConfig.getPort();
         // 可选: 指定线程数量
-        bossGroup = new NioEventLoopGroup(1);
-        workerGroup = new NioEventLoopGroup();
+        bossGroup = new NioEventLoopGroup(webSocketConfig.getBossThreadSize());
+        workerGroup = new NioEventLoopGroup(webSocketConfig.getWorkThreadSize());
         start();
     }
 
@@ -70,20 +70,6 @@ public class ImServer {
             Thread.currentThread().interrupt();
         } finally {
             shutdown();
-        }
-    }
-
-    private void loadConfig() {
-        Properties prop = new Properties();
-        try (InputStream input = getClass().getClassLoader().getResourceAsStream("config.properties")) {
-            if (input == null) {
-                System.out.println("Sorry, unable to find config.properties");
-                return;
-            }
-            prop.load(input);
-            port = Integer.parseInt(prop.getProperty("tcp.port"));
-        } catch (IOException ex) {
-            ex.printStackTrace();
         }
     }
 
