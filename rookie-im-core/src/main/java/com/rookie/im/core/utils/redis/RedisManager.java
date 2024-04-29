@@ -1,7 +1,6 @@
 package com.rookie.im.core.utils.redis;
 
 import com.rookie.im.core.config.AppConfig;
-import io.netty.bootstrap.BootstrapConfig;
 import lombok.Getter;
 import org.redisson.api.RedissonClient;
 
