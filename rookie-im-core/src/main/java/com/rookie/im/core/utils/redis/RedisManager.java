@@ -12,13 +12,24 @@ import org.redisson.api.RedissonClient;
 public class RedisManager {
 
     @Getter
-    private static RedissonClient redissonClient;
+    private static volatile RedissonClient redissonClient;
+    private static final Object lock = new Object();
 
-    private static Integer loginModel;
-
-    public static void init (AppConfig config) {
-        SingleClientStrategy singleClientStrategy = new SingleClientStrategy();
-        redissonClient = singleClientStrategy.getRedissonClient(config.getRookie().getRedis());
+    public static void init(AppConfig config) {
+        if (redissonClient == null) {
+            synchronized (lock) {
+                if (redissonClient == null) {
+                    SingleClientStrategy singleClientStrategy = new SingleClientStrategy();
+                    redissonClient = singleClientStrategy.getRedissonClient(config.getRookie().getRedis());
+                }
+            }
+        }
     }
 
+    public static RedissonClient getRedissonClient() {
+        if (redissonClient == null) {
+            throw new IllegalStateException("Redisson client is not initialized yet. Please call init() first.");
+        }
+        return redissonClient;
+    }
 }

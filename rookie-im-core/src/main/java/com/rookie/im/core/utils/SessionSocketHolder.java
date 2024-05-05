@@ -31,4 +31,17 @@ public class SessionSocketHolder {
         return CHANNELS.get(userClientDto);
     }
 
+    public static void remove(Integer appId, String userId,Integer clientType) {
+        UserClientDto userClientDto = new UserClientDto();
+        userClientDto.setAppId(appId);
+        userClientDto.setUserId(userId);
+        userClientDto.setClientType(clientType);
+        CHANNELS.remove(userClientDto);
+    }
+
+    public static void remove(NioSocketChannel channel) {
+        CHANNELS.entrySet().stream().filter(entity -> entity.getValue() == channel)
+                .forEach(entity -> CHANNELS.remove(entity.getKey()));
+    }
+
 }
