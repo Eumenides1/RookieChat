@@ -1,0 +1,6 @@
+spring:
+  rabbitmq:
+    host: 49.232.228.92
+    port: 15672
+    username: rookie
+    password: 8uhb^YJm

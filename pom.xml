@@ -20,6 +20,7 @@
         <module>rookie-im-framework</module>
         <module>netty-study</module>
         <module>rookie-im-core</module>
+        <module>rabbitmq-study</module>
     </modules>
 
     <properties>
