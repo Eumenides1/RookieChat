@@ -23,6 +23,8 @@ public class AppConfig {
 
         private Integer workThreadSize; //work线程
 
+        private Long heartBeatTime;
+
         private RedisConfig redis;
 
     }

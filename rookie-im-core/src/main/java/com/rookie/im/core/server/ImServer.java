@@ -2,6 +2,7 @@ package com.rookie.im.core.server;
 
 import com.rookie.im.core.codec.WebSocketMessageDecoder;
 import com.rookie.im.core.config.AppConfig;
+import com.rookie.im.core.handler.HeartBeatHandler;
 import com.rookie.im.core.handler.RookieServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
@@ -12,6 +13,7 @@ import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.stream.ChunkedWriteHandler;
+import io.netty.handler.timeout.IdleStateHandler;
 
 /**
  * @author eumenides
@@ -32,10 +34,11 @@ public class ImServer {
         // 可选: 指定线程数量
         bossGroup = new NioEventLoopGroup(webSocketConfig.getBossThreadSize());
         workerGroup = new NioEventLoopGroup(webSocketConfig.getWorkThreadSize());
-        start();
+
+        start(this.webSocketConfig);
     }
 
-    private void start() {
+    private void start(AppConfig.WebSocketConfig config) {
         try {
             ServerBootstrap bootstrap = new ServerBootstrap();
             bootstrap.group(bossGroup, workerGroup)
@@ -57,6 +60,8 @@ public class ImServer {
                             pipeline.addLast("aggregator", new HttpObjectAggregator(65535));
                             pipeline.addLast(new WebSocketServerProtocolHandler("/ws"));
                             pipeline.addLast(new WebSocketMessageDecoder());
+                            pipeline.addLast(new IdleStateHandler(0, 0 ,10));
+                            pipeline.addLast(new HeartBeatHandler(config.getHeartBeatTime()));
                             pipeline.addLast(new RookieServerHandler());
                         }
                     });
