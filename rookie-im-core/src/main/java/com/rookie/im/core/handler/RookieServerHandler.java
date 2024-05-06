@@ -7,17 +7,12 @@ import com.rookie.im.core.codec.pack.LoginPack;
 import com.rookie.im.core.codec.proto.Message;
 import com.rookie.im.core.constant.Constants;
 import com.rookie.im.core.utils.SessionSocketHolder;
-import com.rookie.im.core.utils.redis.RedisManager;
-import com.rookie.stack.common.domain.model.UserSession;
-import com.rookie.stack.common.enums.ImConnectStatusEnum;
 import com.rookie.stack.common.enums.command.SystemCommand;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.util.AttributeKey;
 import lombok.extern.slf4j.Slf4j;
-import org.redisson.api.RMap;
-import org.redisson.api.RedissonClient;
 
 /**
  * @author eumenides
