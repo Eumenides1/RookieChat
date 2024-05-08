@@ -14,3 +14,10 @@ rookie:
     poolSize: 10
     single:
       address: 49.232.228.92:6666
+  ## rabbitmq
+  rabbitmq:
+    host: 49.232.228.92
+    port: 5672
+    virtualHost: /
+    userName: rookie
+    password: 8uhb^YJm

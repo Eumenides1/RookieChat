@@ -44,3 +44,5 @@ application-test.properties
 .idea/
 !/logs/
 logs
+
+config.yml

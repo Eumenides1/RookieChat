@@ -1,9 +1,10 @@
 package com.rookie.im.core;
 
 import com.rookie.im.core.config.AppConfig;
+import com.rookie.im.core.mq.reciver.MessageReciver;
 import com.rookie.im.core.server.ImServer;
+import com.rookie.im.core.mq.factory.MqFactory;
 import com.rookie.im.core.utils.redis.RedisManager;
-import io.netty.bootstrap.BootstrapConfig;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.FileInputStream;
@@ -38,6 +39,10 @@ public class Starter {
 
             // 启动 redis
             RedisManager.init(appConfig);
+
+            MqFactory.init(appConfig.getRookie().getRabbitmq());
+
+            MessageReciver.init();
 
         }catch (Exception e){
             e.printStackTrace();

@@ -27,6 +27,8 @@ public class AppConfig {
 
         private RedisConfig redis;
 
+        private Rabbitmq rabbitmq;
+
     }
 
     @Data
@@ -86,6 +88,19 @@ public class AppConfig {
     }
 
 
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class Rabbitmq {
+        private String host;
 
+        private Integer port;
 
+        private String virtualHost;
+
+        private String userName;
+
+        private String password;
+    }
 }
