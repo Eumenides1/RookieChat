@@ -28,9 +28,8 @@ public enum CommandType {
         this.commandType = commandType;
     }
 
-    public static CommandType getCommandType(Command command) {
-        String com = command.toString();
-        String commandSub = com.substring(0, 1);
+    public static CommandType getCommandType(String command) {
+        String commandSub = command.substring(0, 1);
         for (int i = 0; i < CommandType.values().length; i++) {
             if (CommandType.values()[i].getCommandType().equals(commandSub)) {
                 return CommandType.values()[i];

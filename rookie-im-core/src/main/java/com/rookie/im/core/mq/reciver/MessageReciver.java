@@ -4,7 +4,7 @@ import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.DefaultConsumer;
 import com.rabbitmq.client.Envelope;
-import com.rookie.im.core.constant.Constants;
+import com.rookie.stack.common.constant.Constants;
 import com.rookie.im.core.mq.factory.MqFactory;
 import lombok.extern.slf4j.Slf4j;
 

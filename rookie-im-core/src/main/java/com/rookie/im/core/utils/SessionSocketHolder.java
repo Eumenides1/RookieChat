@@ -3,7 +3,7 @@ package com.rookie.im.core.utils;
 import com.alibaba.fastjson.JSONObject;
 import com.rookie.im.core.codec.pack.LoginPack;
 import com.rookie.im.core.codec.proto.Message;
-import com.rookie.im.core.constant.Constants;
+import com.rookie.stack.common.constant.Constants;
 import com.rookie.im.core.domain.dto.UserClientDto;
 import com.rookie.im.core.utils.redis.RedisManager;
 import com.rookie.stack.common.domain.model.UserSession;

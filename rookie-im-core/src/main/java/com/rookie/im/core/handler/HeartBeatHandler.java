@@ -1,6 +1,6 @@
 package com.rookie.im.core.handler;
 
-import com.rookie.im.core.constant.Constants;
+import com.rookie.stack.common.constant.Constants;
 import com.rookie.im.core.utils.SessionSocketHolder;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;

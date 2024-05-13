@@ -11,6 +11,11 @@ spring:
     username: ${rookie-im.mysql.username}
     password: ${rookie-im.mysql.password}
     driver-class-name: com.mysql.cj.jdbc.Driver
+  rabbitmq:
+    host: ${rookie-im.rabbitmq.host}
+    port: ${rookie-im.rabbitmq.port}
+    username: ${rookie-im.rabbitmq.username}
+    password: ${rookie-im.rabbitmq.password}
   mvc:
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER

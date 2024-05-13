@@ -16,7 +16,7 @@ def send_messages(ws):
     body_length = len(name_bytes)
 
     # 基础数据
-    command = 9000
+    command = 19000
     version = 1
     clientType = 4
     messageType = 0x0

@@ -2,7 +2,7 @@ package com.rookie.im.core.utils.redis;
 
 import com.alibaba.fastjson.JSONObject;
 import com.rookie.im.core.codec.pack.MessagePack;
-import com.rookie.im.core.constant.Constants;
+import com.rookie.stack.common.constant.Constants;
 import com.rookie.im.core.domain.dto.UserClientDto;
 import com.rookie.im.core.utils.SessionSocketHolder;
 import com.rookie.stack.common.enums.ClientType;

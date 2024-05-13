@@ -4,9 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.rabbitmq.client.Channel;
 import com.rookie.im.core.codec.proto.Message;
-import com.rookie.im.core.constant.Constants;
+import com.rookie.stack.common.constant.Constants;
 import com.rookie.im.core.mq.factory.MqFactory;
-import com.rookie.stack.common.enums.command.Command;
 import com.rookie.stack.common.enums.command.CommandType;
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,15 +16,17 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class MqMessageProducer {
-    public static void sendMessage(Message message, Command command) {
+    public static void sendMessage(Message message, Integer command) {
         Channel channel = null;
         String channelName = "";
-        CommandType commandType = CommandType.getCommandType(command);
+        CommandType commandType = CommandType.getCommandType(command.toString());
         switch (commandType){
             case SYSTEM:
                 channelName = Constants.RabbitConstants.GatewaySystemService;
+            case USER:
+                channelName = Constants.RabbitConstants.Im2UserService;
             default:
-                log.info("invalid command type {} {}", commandType, command);
+                channelName = Constants.RabbitConstants.Im2MessageService;
         }
         try {
             channel = MqFactory.getChannel(channelName);

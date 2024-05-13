@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.rookie.im.core.codec.pack.LoginPack;
 import com.rookie.im.core.codec.proto.Message;
-import com.rookie.im.core.constant.Constants;
+import com.rookie.stack.common.constant.Constants;
 import com.rookie.im.core.domain.dto.UserClientDto;
 import com.rookie.im.core.mq.publish.MqMessageProducer;
 import com.rookie.im.core.utils.SessionSocketHolder;
@@ -38,7 +38,13 @@ public class RookieServerHandler extends SimpleChannelInboundHandler<Message> {
             handleLogout(ctx);
         } else if (command == SystemCommand.PING.getCommand()) {
             handlePing(ctx);
+        } else {
+            handleMessage(msg, command);
         }
+    }
+
+    private void handleMessage(Message msg, Integer command) {
+        MqMessageProducer.sendMessage(msg, command);
     }
 
     private void handleLogin(ChannelHandlerContext ctx, Message msg) throws Exception {

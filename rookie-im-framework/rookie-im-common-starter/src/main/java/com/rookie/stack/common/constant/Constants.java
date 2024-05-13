@@ -1,4 +1,4 @@
-package com.rookie.im.core.constant;
+package com.rookie.stack.common.constant;
 
 /**
  * @author eumenides
