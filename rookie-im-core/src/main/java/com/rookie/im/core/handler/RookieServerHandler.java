@@ -6,13 +6,18 @@ import com.alibaba.fastjson.TypeReference;
 import com.rookie.im.core.codec.pack.LoginPack;
 import com.rookie.im.core.codec.proto.Message;
 import com.rookie.im.core.constant.Constants;
+import com.rookie.im.core.domain.dto.UserClientDto;
+import com.rookie.im.core.mq.publish.MqMessageProducer;
 import com.rookie.im.core.utils.SessionSocketHolder;
+import com.rookie.im.core.utils.redis.RedisManager;
 import com.rookie.stack.common.enums.command.SystemCommand;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.util.AttributeKey;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RTopic;
+import org.redisson.api.RedissonClient;
 
 /**
  * @author eumenides
@@ -41,7 +46,21 @@ public class RookieServerHandler extends SimpleChannelInboundHandler<Message> {
                 new TypeReference<LoginPack>(){}.getType());
         setChannelAttributes(ctx, msg, loginPack);
         SessionSocketHolder.createUserSession(ctx, msg, loginPack);
+        // 广播上线消息
+        fanoutUserLogin(msg,loginPack);
     }
+
+    private void fanoutUserLogin(Message msg,LoginPack loginPack) {
+        UserClientDto dto = new UserClientDto();
+        dto.setImei(msg.getMessageHeader().getImei());
+        dto.setUserId(loginPack.getUserId());
+        dto.setClientType(msg.getMessageHeader().getClientType());
+        dto.setAppId(msg.getMessageHeader().getAppId());
+        RedissonClient redissonClient = RedisManager.getRedissonClient();
+        RTopic rTopic = redissonClient.getTopic(Constants.RedisConstants.UserLoginChannel);
+        rTopic.publish(JSONObject.toJSONString(dto));
+    }
+
     private void handleLogout(ChannelHandlerContext ctx) {
         SessionSocketHolder.removeUserSession((NioSocketChannel) ctx.channel());
     }

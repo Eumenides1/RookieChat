@@ -69,6 +69,8 @@ public class Constants {
 
     public static class RabbitConstants{
 
+        public static final String GatewaySystemService = "gatewaySystemService";
+
         public static final String Im2UserService = "pipeline2UserService";
 
         public static final String Im2MessageService = "pipeline2MessageService";

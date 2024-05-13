@@ -25,6 +25,8 @@ public class AppConfig {
 
         private Long heartBeatTime;
 
+        private Integer loginModel;
+
         private RedisConfig redis;
 
         private Rabbitmq rabbitmq;

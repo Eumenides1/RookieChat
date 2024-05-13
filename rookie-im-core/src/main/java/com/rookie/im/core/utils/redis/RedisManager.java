@@ -21,6 +21,8 @@ public class RedisManager {
                 if (redissonClient == null) {
                     SingleClientStrategy singleClientStrategy = new SingleClientStrategy();
                     redissonClient = singleClientStrategy.getRedissonClient(config.getRookie().getRedis());
+                    UserLoginListener userLoginMessageListener = new UserLoginListener(config.getRookie().getLoginModel());
+                    userLoginMessageListener.listenerUserLogin();
                 }
             }
         }
